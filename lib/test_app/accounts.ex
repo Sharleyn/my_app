@@ -126,4 +126,8 @@ defmodule TestApp.Accounts do
   def user_details(%User{} = user) do
     user_gender(user) <> " " <> user_age_range(user)
   end
+
+  def format_user_name(%User{name: name}) do
+    name |>String.upcase() |>String.replace(" ","_")
+  end
 end
