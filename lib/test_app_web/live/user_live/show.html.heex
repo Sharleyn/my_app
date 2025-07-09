@@ -11,6 +11,8 @@
 <.list>
   <:item title="Name">{@user.name}</:item>
   <:item title="Age">{@user.age}</:item>
+  <:item title="Category">{TestApp.Accounts.user_age_range(@user)}</:item>
+
 </.list>
 
 <.back navigate={~p"/users"}>Back to users</.back>

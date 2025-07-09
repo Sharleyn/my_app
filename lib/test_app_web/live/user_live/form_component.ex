@@ -24,6 +24,7 @@ defmodule TestAppWeb.UserLive.FormComponent do
         <.input field={@form[:address]} type="text" label="Address" />
         <.input field={@form[:dob]} type="date" label="Date of Birth" />
         <.input field={@form[:gender]} type="select" label="Gender" options={["Male", "Female"]} />
+        <.input field={@form[:detail]} type="text" label="Category" />
 
         <:actions>
           <.button phx-disable-with="Saving...">Save User</.button>
