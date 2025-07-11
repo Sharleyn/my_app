@@ -130,17 +130,4 @@ defmodule TestApp.Accounts do
   def format_user_name(%User{name: name}) do
     name |>String.upcase() |>String.replace(" ","_")
   end
-
-  def user_ic_info(user_ic_number) when rem(user_ic_number/2) == 0 do
-    "Female"
-  end
-
-  def user_ic_info(_user) do
-    "Male"
-  end
-
-  def user_ic_info(%User{} = user) do
-    state_code = %{"01" => "Johor", "02" => "Kedah", "03" => "Kelantan", "04" => "Melaka", "05" => "Negeri Sembilan", "06" => "Pahang", "07" => "Pulau Pinang", "08" => "Perak", "09" => "Perlis", "10" => "Selangor", "11" => "Terengganu", "12" => "Sabah", "13" => "Sarawak", "14" => "W.P. Kuala Lumpur", "15" => "W.P. Labuan", "16" => "W.P. Putrajaya"}
-
-  end
 end
