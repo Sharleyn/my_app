@@ -2,12 +2,13 @@ defmodule TestApp.Content.Post do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias TestApp.Accounts.User
+
   schema "posts" do
     field :title, :string
     field :body, :string
-    field :user_id, :id
 
-
+    belongs_to :user, User
 
     timestamps(type: :utc_datetime)
   end

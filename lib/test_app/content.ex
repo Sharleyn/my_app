@@ -35,7 +35,7 @@ defmodule TestApp.Content do
       ** (Ecto.NoResultsError)
 
   """
-  def get_post!(id), do: Repo.get!(Post, id)
+ # def get_post!(id), do: Repo.get!(Post, id)
 
   @doc """
   Creates a post.
@@ -49,6 +49,19 @@ defmodule TestApp.Content do
       {:error, %Ecto.Changeset{}}
 
   """
+  def get_post!(id, opts \\ []) do
+    preload_opt = Access.get(opts, :preload, [])
+
+    Post
+    |> preload(^preload_opt)
+    |> Repo.get!(id)
+  end
+
+  @spec create_post() :: any()
+
+
+
+
   def create_post(attrs \\ %{}) do
     %Post{}
     |> Post.changeset(attrs)
