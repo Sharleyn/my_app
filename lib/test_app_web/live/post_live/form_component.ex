@@ -2,6 +2,7 @@ defmodule TestAppWeb.PostLive.FormComponent do
   use TestAppWeb, :live_component
 
   alias TestApp.Content
+  alias TestApp.Accounts
 
   @impl true
   def render(assigns) do
@@ -19,7 +20,7 @@ defmodule TestAppWeb.PostLive.FormComponent do
         phx-change="validate"
         phx-submit="save"
       >
-        <.input field={@form[:user_id]} type="text" label="User ID" />
+        <.input field={@form[:user_id]} type="select" label="User" options={user_options()} />
         <.input field={@form[:title]} type="text" label="Title" />
         <.input field={@form[:body]} type="text" label="Body" />
         <:actions>
@@ -81,4 +82,12 @@ defmodule TestAppWeb.PostLive.FormComponent do
   end
 
   defp notify_parent(msg), do: send(self(), {__MODULE__, msg})
+
+  defp user_options do
+    Accounts.list_users()
+
+    |> Enum.map(fn user ->
+      {user.name, user.id}
+    end)
+  end
 end

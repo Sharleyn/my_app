@@ -17,9 +17,13 @@ defmodule TestApp.Content do
       [%Post{}, ...]
 
   """
-  def list_posts do
-    Repo.all(Post)
-  end
+  def list_posts(opts \\ []) do
+    preload_opt = Access.get(opts, :preload, [])
+
+    Repo.all(from p in Post, preload: ^preload_opt)
+ end
+
+
 
   @doc """
   Gets a single post.
@@ -37,7 +41,7 @@ defmodule TestApp.Content do
   """
  # def get_post!(id), do: Repo.get!(Post, id)
 
-  @doc """
+   @doc """
   Creates a post.
 
   ## Examples
